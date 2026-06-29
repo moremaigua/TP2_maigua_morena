@@ -1,0 +1,41 @@
+ls -l
+git clone https://github.com/moremaigua/TP2_Maigua_Morena.git
+cd .
+cd TP2_Maigua_Morena/
+sudo fdisk -l
+sudo fdisk /dev/sdd
+free
+free -h
+sudo mkswap /dev/sdd1
+free -h
+sudo swapon /dev/sdd1
+free -h
+swapon -s
+cat /proc/swaps
+sudo fdisk /dev/sdc
+sudo wipefs -a /dev/sdc1
+sudo pvcreate /dev/sdd2 /dev/sdd3 /dev/sdd5 /dev/sdd6 /dev/sdc1 /dev/sdc2
+sudo pvs
+sudo vgcreate vd_datos /dev/sdc1 /dev/sdd2
+sudo vgremove vd_datos
+sudo vgcreate vg_datos /dev/sdc1 /dev/sdd2
+sudo vgs
+sudo pvs
+sudo vgcreate vg_web /dev/sdc2
+sudo pvs
+sudo lvcreate -L 1G vg_web -n lv_web1
+sudo lvcreate -L 512M vg_web -n lv_web2
+sudo lvcreate -L 512M vg_web -n lv_web3
+sudo lvs
+sudo pvs
+sudo fdisk -l
+sudo mkfs.ext4 /dev/mapper/vg_web-lv_web1
+sudo mkfs.ext4 /dev/mapper/vg_web-lv_web2
+sudo mkfs.ext4 /dev/mapper/vg_web-lv_web3
+pwd
+ls
+sudo fdisk -l
+sudo pvs > pvs.txt
+sudo vgs > vgs.txt
+sudo lvs > lvs.txt
+sudo history > historial_lvm.txt
